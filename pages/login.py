@@ -1,14 +1,11 @@
-
-
 class inside_login_page:
-    def login_page():
-        pass
-
     URL = 'https://d36ayf7y0dxdzq.cloudfront.net/login'
+    #LOGIN_WITH_AUTHO_BTN = "//*[contains(text(), ' Login with Auth0 ')]"
+    def __init__(self, driver):
+        self.driver = driver
 
-class browser_class:
-    def __init__(self, browser):
-        self.browser = browser
-        
-    def load_page():
-         
+    def load(self):
+        self.driver.get(self.URL)      
+
+    def get_title(self):
+        return self.driver.title
