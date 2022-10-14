@@ -10,7 +10,9 @@ class inside_login_page:
     SIGN_IN_WITH_GOOGLE_BTN = (By.XPATH, '//*[@id="auth0-lock-container-1"]/div/div[2]/form/div/div/div/div/div[2]/div[2]/span/div/div/div/div/div/div/div/div/div/div/div[1]/a')
     USERNAME_TEXTBOX = (By.XPATH, '//*[@id="identifierId"]')
     PASSWORD_TEXTBOX = (By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')
-
+    MENU_BUTTON = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/div/div/div/app-header/div/div[1]/button')
+    MYTIMESHEET = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/ng-sidebar/aside/app-navbar/div/div[2]/div/app-navbar-item[10]/a/div/div[1]')
+    
     #Constructor.
     def __init__(self, driver):
         self.driver = driver
@@ -23,15 +25,20 @@ class inside_login_page:
     def get_title(self):
         return self.driver.title
 
-    #Click on Auth0 button.
-    def click_autho_button(self):
-        btn = self.driver.find_element(*self.LOGIN_WITH_AUTHO_BTN)
-        btn.click()
-
-    #Click on Sign in with google button.
-    def click_sign_with_google_btn(self):
-        btn = self.driver.find_element(*self.SIGN_IN_WITH_GOOGLE_BTN)
-        btn.click()
+    #Click on Auth0 or Google button.
+    def click_btn(self, option):
+        if option == 'AUTHOBTN':
+            btn = self.driver.find_element(*self.LOGIN_WITH_AUTHO_BTN)
+            btn.click()
+        elif option == 'GOOGLEBTN':
+            btn = self.driver.find_element(*self.SIGN_IN_WITH_GOOGLE_BTN)
+            btn.click()
+        elif option == 'MENUBTN':
+            btn = self.driver.find_element(*self.MENU_BUTTON)
+            btn.click()
+        elif option == 'TIMESHEETSPAN':
+            btn = self.driver.find_element(*self.MYTIMESHEET)
+            btn.click()
 
     #Write on the textbox if the option is USERNAME, write the uername, else the password.
     def write_on_textbox(self, data_from_user, option):
@@ -47,6 +54,3 @@ class inside_login_page:
             textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
             textbox = textbox.get_attribute("value")
             return textbox
-
-    #se puede crear un file nuevo donde mantenga los métodos repetidos
-    #y más usados del driver para solo importarlos y pasarles el selector.

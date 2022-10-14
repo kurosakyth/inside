@@ -14,13 +14,13 @@ def test_prueba(browser):
     assert 'PortalWeb' == inside.get_title()
 
     #Click the auth0 button.
-    inside.click_autho_button()
+    inside.click_btn('AUTHOBTN')
 
     #Check the title of the page is the expected.
     assert 'Sign In with Auth0' == inside.get_title()
 
     #Click on the Sign with Google button.
-    inside.click_sign_with_google_btn()
+    inside.click_btn('GOOGLEBTN')
 
     #Check the title of the page is the expected.
     assert 'Inicia sesión: Cuentas de Google' == inside.get_title()
@@ -34,5 +34,12 @@ def test_prueba(browser):
     #Write on the username textbox using the username of the file.
     inside.write_on_textbox(user.password,'PASSWORD')
 
+    #Click the top left Menu button.
+    inside.click_btn('MENUBTN')
+
+    #Click the Timesheet option of the menu.
+    inside.click_btn('TIMESHEETSPAN')
+    #validar que entro al timetask
+    
     #Delete this timer
     time.sleep(10)
