@@ -22,8 +22,10 @@ def test_prueba(browser):
     #Click on the Sign with Google button.
     inside.click_btn('GOOGLEBTN')
 
-    #Check the title of the page is the expected.
+                    #Check the title of the page is the expected for WINDOWS.
     assert 'Inicia sesión: Cuentas de Google' == inside.get_title()
+                    #Check the title of the page is the expected for MAC.
+    #assert 'Acceso: Cuentas de Google' == inside.get_title()
 
     #Write on the username textbox using the username of the file.
     inside.write_on_textbox(user.username,'USERNAME')
