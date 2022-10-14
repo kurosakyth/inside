@@ -2,6 +2,9 @@ Curso sobre elementos en web avanzados: Locating web elements Strategies TAU And
 Curso sobre AI para seleccion de elementos: AI for Element Selection: Erasing the Pain of Fragile Tests Scripts Jason Arbon
 
 Requirements:
+    Set as environment variable the path of the webdriver:
+        path: C:\Selenium
+        With the driver inside named as chromedriver
     Python.
     Pipenv:
         pip install pipenv

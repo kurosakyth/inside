@@ -1,4 +1,6 @@
 from pages.login import inside_login_page
+import user
+import time
 
 def test_prueba(browser):
 
@@ -22,3 +24,15 @@ def test_prueba(browser):
 
     #Check the title of the page is the expected.
     assert 'Inicia sesión: Cuentas de Google' == inside.get_title()
+
+    #Write on the username textbox using the username of the file.
+    inside.write_on_textbox(user.username,'USERNAME')
+
+    #Check that the username on the file is the one wrote.
+    assert user.username == inside.get_text_from_textbox('USERNAME')
+
+    #Write on the username textbox using the username of the file.
+    inside.write_on_textbox(user.password,'PASSWORD')
+
+    #Delete this timer
+    time.sleep(10)
