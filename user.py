@@ -10,5 +10,5 @@
 #     def password_return(self):
 #         password = 'qwrt7890'
 #         return password
-username= 'asantamaria@multiplied.com'
-password = 'qwrt7890'
+username= '.'
+password = '.'
