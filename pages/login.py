@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.ui import WebDriverWait
 
 class inside_login_page:
     #Links.
@@ -59,3 +61,9 @@ class inside_login_page:
             textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
             textbox = textbox.get_attribute("value")
             return textbox
+
+    def select_cecropia_dropdown(self, option, timeout=30):
+        wait = WebDriverWait(self.driver, timeout)
+        if option == 'CLIENTDROPDOWNTIMETASK':
+            cecropiab_dropdown = wait.until(ec.visibility_of_element_located(self.CLIENTDROPDOWNTIMETASK))
+            cecropiab_dropdown.click()

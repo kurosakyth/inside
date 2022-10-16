@@ -43,11 +43,11 @@ def test_prueba(browser):
     inside.click_btn('TIMESHEETSPAN')
 
     #Click the Timesheet option of the menu.
-    inside.click_btn('CLIENTDROPDOWNTIMETASK')
+    inside.select_cecropia_dropdown('CLIENTDROPDOWNTIMETASK')
     #validar que entro al timetask
     
     #Delete this timer
-    time.sleep(10)
+    #time.sleep(10)
 
     #esperar un elemento.
     #headless browser.
