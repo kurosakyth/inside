@@ -41,6 +41,9 @@ def test_prueba(browser):
 
     #Click the Timesheet option of the menu.
     inside.click_btn('TIMESHEETSPAN')
+
+    #Click the Timesheet option of the menu.
+    inside.click_btn('CLIENTDROPDOWNTIMETASK')
     #validar que entro al timetask
     
     #Delete this timer

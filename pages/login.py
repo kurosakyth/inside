@@ -12,7 +12,8 @@ class inside_login_page:
     PASSWORD_TEXTBOX = (By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')
     MENU_BUTTON = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/div/div/div/app-header/div/div[1]/button')
     MYTIMESHEET = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/ng-sidebar/aside/app-navbar/div/div[2]/div/app-navbar-item[10]/a/div/div[1]')
-    
+    CLIENTDROPDOWNTIMETASK = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/div/div/div/div/ui-view/app-timesheet-personal-time/app-timesheet-personal-add/div/div[1]/form/select[1]/option[2]')
+
     #Constructor.
     def __init__(self, driver):
         self.driver = driver
@@ -39,6 +40,10 @@ class inside_login_page:
         elif option == 'TIMESHEETSPAN':
             btn = self.driver.find_element(*self.MYTIMESHEET)
             btn.click()
+        elif option == 'CLIENTDROPDOWNTIMETASK':
+            btn = self.driver.find_element(*self.CLIENTDROPDOWNTIMETASK)
+            btn.click()
+
 
     #Write on the textbox if the option is USERNAME, write the uername, else the password.
     def write_on_textbox(self, data_from_user, option):
