@@ -43,8 +43,7 @@ def test_prueba(browser):
     inside.click_btn('TIMESHEETSPAN')
 
     #Click the Timesheet option of the menu.
-    inside.select_cecropia_dropdown('CLIENTDROPDOWNTIMETASK')
-    #validar que entro al timetask
+    inside.click_btn('CLIENTDROPDOWNTIMETASK')
     
     #Delete this timer
     #time.sleep(10)

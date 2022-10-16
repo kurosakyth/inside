@@ -29,21 +29,22 @@ class inside_login_page:
         return self.driver.title
 
     #Click on Auth0 or Google button.
-    def click_btn(self, option):
+    def click_btn(self, option, timeout = 10):
+        wait = WebDriverWait(self.driver, timeout)
         if option == 'AUTHOBTN':
-            btn = self.driver.find_element(*self.LOGIN_WITH_AUTHO_BTN)
+            btn = wait.until(ec.visibility_of_element_located(self.LOGIN_WITH_AUTHO_BTN))
             btn.click()
         elif option == 'GOOGLEBTN':
-            btn = self.driver.find_element(*self.SIGN_IN_WITH_GOOGLE_BTN)
+            btn = wait.until(ec.visibility_of_element_located(self.SIGN_IN_WITH_GOOGLE_BTN))
             btn.click()
         elif option == 'MENUBTN':
-            btn = self.driver.find_element(*self.MENU_BUTTON)
+            btn = wait.until(ec.visibility_of_element_located(self.MENU_BUTTON))
             btn.click()
         elif option == 'TIMESHEETSPAN':
-            btn = self.driver.find_element(*self.MYTIMESHEET)
+            btn = wait.until(ec.visibility_of_element_located(self.MYTIMESHEET))
             btn.click()
         elif option == 'CLIENTDROPDOWNTIMETASK':
-            btn = self.driver.find_element(*self.CLIENTDROPDOWNTIMETASK)
+            btn = wait.until(ec.visibility_of_element_located(self.CLIENTDROPDOWNTIMETASK))
             btn.click()
 
 
@@ -61,9 +62,3 @@ class inside_login_page:
             textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
             textbox = textbox.get_attribute("value")
             return textbox
-
-    def select_cecropia_dropdown(self, option, timeout=30):
-        wait = WebDriverWait(self.driver, timeout)
-        if option == 'CLIENTDROPDOWNTIMETASK':
-            cecropiab_dropdown = wait.until(ec.visibility_of_element_located(self.CLIENTDROPDOWNTIMETASK))
-            cecropiab_dropdown.click()
