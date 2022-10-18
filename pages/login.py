@@ -47,13 +47,14 @@ class inside_login_page:
         elif option == 'CLIENTDROPDOWNTIMETASK':
             self.btn_method(self.CLIENTDROPDOWNTIMETASK)
 
+    #Method to write on a textbox.
     def write_on_textbox_method(self, data_from_user, selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
         textbox = wait.until(ec.visibility_of_element_located(selector))
         textbox.send_keys(data_from_user + Keys.RETURN)
         pass
 
-    #Write on a textbox using a specific selector.
+    #Write on a textbox using a specific selector by using a method.
     def write_on_textbox(self, data_from_user, option):
         if option == 'USERNAME':
             self.write_on_textbox_method(data_from_user,self.USERNAME_TEXTBOX)
