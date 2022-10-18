@@ -29,8 +29,8 @@ class inside_login_page:
         return self.driver.title
 
     #Method to click / select a button option.
-    def btn_method(self, selector, timeout=20):
-        wait = WebDriverWait(self.driver, timeout)
+    def btn_method(self, selector, timeout = 20):
+        wait = WebDriverWait(self.driver,timeout)
         btn = wait.until(ec.visibility_of_element_located(selector))
         btn.click()
 
@@ -48,7 +48,7 @@ class inside_login_page:
             self.btn_method(self.CLIENTDROPDOWNTIMETASK)
 
     #Method to write on a textbox.
-    def write_on_textbox_method(self, data_from_user, selector, timeout = 20):
+    def textbotx_method(self, data_from_user, selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
         textbox = wait.until(ec.visibility_of_element_located(selector))
         textbox.send_keys(data_from_user + Keys.RETURN)
