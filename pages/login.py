@@ -57,9 +57,9 @@ class inside_login_page:
     #Write on a textbox using a specific selector by using a method.
     def write_on_textbox(self, data_from_user, option):
         if option == 'USERNAME':
-            self.write_on_textbox_method(data_from_user,self.USERNAME_TEXTBOX)
+            self.textbotx_method(data_from_user,self.USERNAME_TEXTBOX)
         elif option == 'PASSWORD':
-            self.write_on_textbox_method(data_from_user,self.PASSWORD_TEXTBOX)
+            self.textbotx_method(data_from_user,self.PASSWORD_TEXTBOX)
 
     #Check the web object and get the attribute 'value'.
     def get_text_from_textbox(self,option):
