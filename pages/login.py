@@ -47,15 +47,18 @@ class inside_login_page:
         elif option == 'CLIENTDROPDOWNTIMETASK':
             self.btn_method(self.CLIENTDROPDOWNTIMETASK)
 
-    #Write on a textbox using a specific selector.
-    def write_on_textbox(self, data_from_user, option, timeout = 20):
+    def write_on_textbox_method(self, data_from_user, selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
+        textbox = wait.until(ec.visibility_of_element_located(selector))
+        textbox.send_keys(data_from_user + Keys.RETURN)
+        pass
+
+    #Write on a textbox using a specific selector.
+    def write_on_textbox(self, data_from_user, option):
         if option == 'USERNAME':
-            textbox = wait.until(ec.visibility_of_element_located(self.USERNAME_TEXTBOX))
-            textbox.send_keys(data_from_user + Keys.RETURN)
+            self.write_on_textbox_method(data_from_user,self.USERNAME_TEXTBOX)
         elif option == 'PASSWORD':
-            textbox = wait.until(ec.visibility_of_element_located(self.PASSWORD_TEXTBOX))
-            textbox.send_keys(data_from_user + Keys.RETURN)
+            self.write_on_textbox_method(data_from_user,self.PASSWORD_TEXTBOX)
 
     #Check the web object and get the attribute 'value'.
     def get_text_from_textbox(self,option):
