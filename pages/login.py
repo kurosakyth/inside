@@ -28,37 +28,38 @@ class inside_login_page:
     def get_title(self):
         return self.driver.title
 
-    #Click on Auth0 or Google button.
-    def click_btn(self, option, timeout = 10):
+    #Method to click / select a button option.
+    def btn_method(self, selector, timeout=20):
         wait = WebDriverWait(self.driver, timeout)
+        btn = wait.until(ec.visibility_of_element_located(selector))
+        btn.click()
+
+    #Click or select a button using a specific selector.
+    def click_btn(self, option):
         if option == 'AUTHOBTN':
-            btn = wait.until(ec.visibility_of_element_located(self.LOGIN_WITH_AUTHO_BTN))
-            btn.click()
+            self.btn_method(self.LOGIN_WITH_AUTHO_BTN)
         elif option == 'GOOGLEBTN':
-            btn = wait.until(ec.visibility_of_element_located(self.SIGN_IN_WITH_GOOGLE_BTN))
-            btn.click()
+            self.btn_method(self.SIGN_IN_WITH_GOOGLE_BTN)
         elif option == 'MENUBTN':
-            btn = wait.until(ec.visibility_of_element_located(self.MENU_BUTTON))
-            btn.click()
+            self.btn_method(self.MENU_BUTTON)
         elif option == 'TIMESHEETSPAN':
-            btn = wait.until(ec.visibility_of_element_located(self.MYTIMESHEET))
-            btn.click()
+            self.btn_method(self.MYTIMESHEET)
         elif option == 'CLIENTDROPDOWNTIMETASK':
-            btn = wait.until(ec.visibility_of_element_located(self.CLIENTDROPDOWNTIMETASK))
-            btn.click()
+            self.btn_method(self.CLIENTDROPDOWNTIMETASK)
 
-
-    #Write on the textbox if the option is USERNAME, write the uername, else the password.
-    def write_on_textbox(self, data_from_user, option):
+    #Write on a textbox using a specific selector.
+    def write_on_textbox(self, data_from_user, option, timeout = 20):
+        wait = WebDriverWait(self.driver, timeout)
         if option == 'USERNAME':
-            textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
+            textbox = wait.until(ec.visibility_of_element_located(self.USERNAME_TEXTBOX))
             textbox.send_keys(data_from_user + Keys.RETURN)
         elif option == 'PASSWORD':
-            textbox = self.driver.find_element(*self.PASSWORD_TEXTBOX)
+            textbox = wait.until(ec.visibility_of_element_located(self.PASSWORD_TEXTBOX))
             textbox.send_keys(data_from_user + Keys.RETURN)
 
     #Check the web object and get the attribute 'value'.
     def get_text_from_textbox(self,option):
+        if 'USERNAME' == option:
             textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
             textbox = textbox.get_attribute("value")
             return textbox

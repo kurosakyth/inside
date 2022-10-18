@@ -48,5 +48,4 @@ def test_prueba(browser):
     #Delete this timer
     #time.sleep(10)
 
-    #esperar un elemento.
     #headless browser.
