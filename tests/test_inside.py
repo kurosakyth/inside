@@ -60,14 +60,13 @@ def test_prueba(browser):
     #Check that the username on the file is the one wrote.
     assert "Description information test." == inside.get_text_from_textbox('DESCRIPTION')
 
-    #Write on Description of the Timesheet textbox.
+    #Write on Description of the Timesheet textbox. writes 04 in this case (example).
     inside.write_on_textbox('4','TIMEINPUTTIMETASK')
 
-    #Check that the username on the file is the one wrote.
+    #Check that the username on the file is the one wrote. 04 in this case (example).
     assert "04" == inside.get_text_from_textbox('TIMEINPUTTIMETASK')
 
     #Delete this timer
-    #time.sleep(10)
+    time.sleep(10)
 
     #headless browser.
-# cliente, proyecto, modulo, task.

@@ -33,7 +33,7 @@ class inside_login_page:
     def get_title(self):
         return self.driver.title
 
-    #Method to click / select a button option.
+    #Method to click / select a button / option on the page.
     def btn_method_click(self, selector, timeout = 20):
         wait = WebDriverWait(self.driver,timeout)
         btn = wait.until(ec.visibility_of_element_located(selector))
@@ -60,7 +60,7 @@ class inside_login_page:
         else:
             raise Exception('Is not possible to click/select a btn/option.')
 
-    #Method to write on a textbox.
+    #Method to write on a textbox on the page.
     def textbox_method_write(self, data_from_user, selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
         textbox = wait.until(ec.visibility_of_element_located(selector))
@@ -80,30 +80,22 @@ class inside_login_page:
         else:
             raise Exception('Is not possible to write on the textbox.')
 
-    # def textbox_method_get_text(self,selector):
-    #     textbox = self.driver.find_element(selector)
-    #     textbox = textbox.get_attribute("value")
-    #     return textbox
+    #Method to find the texbox on the page.
+    def textbox_method_get_text(self,*selector):
+        textbox = self.driver.find_element(*selector)
+        textbox = textbox.get_attribute("value")
+        return textbox
 
     #Check the web object and get the attribute 'value'.
     def get_text_from_textbox(self,option):
         if 'USERNAME' == option:
-            # value = self.textbox_method_get_text(*self.USERNAME_TEXTBOX)
-            # return value
-            textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
-            textbox = textbox.get_attribute("value")
-            return textbox
+            textbox_value = self.textbox_method_get_text(*self.USERNAME_TEXTBOX)
+            return textbox_value
         elif 'DESCRIPTION' == option:
-            # value = self.textbox_method_get_text(*self.DESCRIPTIONTIMETASK)
-            # return value
-            textbox = self.driver.find_element(*self.DESCRIPTIONTIMETASK)
-            textbox = textbox.get_attribute("value")
-            return textbox
+            textbox_value = self.textbox_method_get_text(*self.DESCRIPTIONTIMETASK)
+            return textbox_value
         elif 'TIMEINPUTTIMETASK' == option:
-            # value = self.textbox_method_get_text(*self.TIMEINPUTTIMETASK)
-            # return value
-            textbox = self.driver.find_element(*self.TIMEINPUTTIMETASK)
-            textbox = textbox.get_attribute("value")
-            return textbox
+            textbox_value = self.textbox_method_get_text(*self.TIMEINPUTTIMETASK)
+            return textbox_value
         else:
             raise Exception('Is not possible to get the text from the textbox.')
