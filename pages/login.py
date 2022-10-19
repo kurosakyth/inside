@@ -8,13 +8,18 @@ class inside_login_page:
     URL = 'https://d36ayf7y0dxdzq.cloudfront.net/login'
     
     #Page objects.
-    LOGIN_WITH_AUTHO_BTN = (By.XPATH,'/html/body/app-root/div/ui-view/app-login/div/div/div[1]/div[2]/button')
-    SIGN_IN_WITH_GOOGLE_BTN = (By.XPATH, '//*[@id="auth0-lock-container-1"]/div/div[2]/form/div/div/div/div/div[2]/div[2]/span/div/div/div/div/div/div/div/div/div/div/div[1]/a')
-    USERNAME_TEXTBOX = (By.XPATH, '//*[@id="identifierId"]')
-    PASSWORD_TEXTBOX = (By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')
-    MENU_BUTTON = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/div/div/div/app-header/div/div[1]/button')
-    MYTIMESHEET = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/ng-sidebar/aside/app-navbar/div/div[2]/div/app-navbar-item[10]/a/div/div[1]')
-    CLIENTDROPDOWNTIMETASK = (By.XPATH, '/html/body/app-root/div/ui-view/app-main/div/ng-sidebar-container/div/div/div/div/ui-view/app-timesheet-personal-time/app-timesheet-personal-add/div/div[1]/form/select[1]/option[2]')
+    LOGIN_WITH_AUTHO_BTN = (By.XPATH,'//button')
+    SIGN_IN_WITH_GOOGLE_BTN = (By.XPATH, '//a[@data-provider]')
+    USERNAME_TEXTBOX = (By.XPATH, '//input[@type="email"]')
+    PASSWORD_TEXTBOX = (By.XPATH, '//input[@type="password"]')
+    MENU_BUTTON = (By.XPATH, '//button[@type="button"]/span/span')
+    MYTIMESHEET = (By.XPATH, '//span[text()="My Timesheet "]')
+    CLIENTDROPDOWNTIMETASK = (By.XPATH, '//select/option[text()="Cecropia Solutions"]')
+    QAOMBOARDINGTIMETASK = (By.XPATH, '//select/option[text()="QA on Boarding"]')
+    DEVELOPMENTTIMTASK = (By.XPATH, '//select/option[text()="Development"]')
+    WORKTYPETIMETASK = (By.XPATH, '//select/option[text()="Qa Developer"]')
+    DESCRIPTIONTIMETASK = (By.XPATH, '//input[@formcontrolname="description"]')
+    TIMEINPUTTIMETASK = (By.XPATH, '//input[@formcontrolname="time"]')
 
     #Constructor.
     def __init__(self, driver):
@@ -29,7 +34,7 @@ class inside_login_page:
         return self.driver.title
 
     #Method to click / select a button option.
-    def btn_method(self, selector, timeout = 20):
+    def btn_method_click(self, selector, timeout = 20):
         wait = WebDriverWait(self.driver,timeout)
         btn = wait.until(ec.visibility_of_element_located(selector))
         btn.click()
@@ -37,18 +42,24 @@ class inside_login_page:
     #Click or select a button using a specific selector.
     def click_btn(self, option):
         if option == 'AUTHOBTN':
-            self.btn_method(self.LOGIN_WITH_AUTHO_BTN)
+            self.btn_method_click(self.LOGIN_WITH_AUTHO_BTN)
         elif option == 'GOOGLEBTN':
-            self.btn_method(self.SIGN_IN_WITH_GOOGLE_BTN)
+            self.btn_method_click(self.SIGN_IN_WITH_GOOGLE_BTN)
         elif option == 'MENUBTN':
-            self.btn_method(self.MENU_BUTTON)
+            self.btn_method_click(self.MENU_BUTTON)
         elif option == 'TIMESHEETSPAN':
-            self.btn_method(self.MYTIMESHEET)
+            self.btn_method_click(self.MYTIMESHEET)
         elif option == 'CLIENTDROPDOWNTIMETASK':
-            self.btn_method(self.CLIENTDROPDOWNTIMETASK)
+            self.btn_method_click(self.CLIENTDROPDOWNTIMETASK)
+        elif option == 'QAOMBOARDINGTIMETASK':
+            self.btn_method_click(self.QAOMBOARDINGTIMETASK)
+        elif option == 'DEVELOPMENTTIMTASK':
+            self.btn_method_click(self.DEVELOPMENTTIMTASK)
+        elif option == 'WORKTYPETIMETASK':
+            self.btn_method_click(self.WORKTYPETIMETASK)
 
     #Method to write on a textbox.
-    def textbotx_method(self, data_from_user, selector, timeout = 20):
+    def textbox_method_write(self, data_from_user, selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
         textbox = wait.until(ec.visibility_of_element_located(selector))
         textbox.send_keys(data_from_user + Keys.RETURN)
@@ -57,13 +68,36 @@ class inside_login_page:
     #Write on a textbox using a specific selector by using a method.
     def write_on_textbox(self, data_from_user, option):
         if option == 'USERNAME':
-            self.textbotx_method(data_from_user,self.USERNAME_TEXTBOX)
+            self.textbox_method_write(data_from_user,self.USERNAME_TEXTBOX)
         elif option == 'PASSWORD':
-            self.textbotx_method(data_from_user,self.PASSWORD_TEXTBOX)
+            self.textbox_method_write(data_from_user,self.PASSWORD_TEXTBOX)
+        elif option == 'DESCRIPTION':
+            self.textbox_method_write(data_from_user,self.DESCRIPTIONTIMETASK)
+        elif option == 'TIMEINPUTTIMETASK':
+            self.textbox_method_write(data_from_user,self.TIMEINPUTTIMETASK)
+
+    def textbox_method_get_text(self,selector):
+        textbox = self.driver.find_element(selector)
+        textbox = textbox.get_attribute("value")
+        return textbox
 
     #Check the web object and get the attribute 'value'.
     def get_text_from_textbox(self,option):
         if 'USERNAME' == option:
-            textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
-            textbox = textbox.get_attribute("value")
-            return textbox
+            value = self.textbox_method_get_text(*self.USERNAME_TEXTBOX)
+            return value
+            # textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
+            # textbox = textbox.get_attribute("value")
+            # return textbox
+        elif 'DESCRIPTION' == option:
+            value = self.textbox_method_get_text(*self.DESCRIPTIONTIMETASK)
+            return value
+            # textbox = self.driver.find_element(*self.DESCRIPTIONTIMETASK)
+            # textbox = textbox.get_attribute("value")
+            # return textbox
+        elif 'TIMEINPUTTIMETASK' == option:
+            value = self.textbox_method_get_text(*self.TIMEINPUTTIMETASK)
+            return value
+            # textbox = self.driver.find_element(*self.TIMEINPUTTIMETASK)
+            # textbox = textbox.get_attribute("value")
+            # return textbox

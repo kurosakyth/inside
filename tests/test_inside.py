@@ -42,10 +42,32 @@ def test_prueba(browser):
     #Click the Timesheet option of the menu.
     inside.click_btn('TIMESHEETSPAN')
 
-    #Click the Timesheet option of the menu.
+    #Click the Timesheet option of the client dropdown.
     inside.click_btn('CLIENTDROPDOWNTIMETASK')
     
+    #Click the Timesheet option of the project dropdown.
+    inside.click_btn('QAOMBOARDINGTIMETASK')
+
+    #Click the Timesheet option of the module dropdown.
+    inside.click_btn('DEVELOPMENTTIMTASK')
+
+    #Click the Timesheet option of the worktype dropdown.
+    inside.click_btn('WORKTYPETIMETASK')
+
+    #Write on Description of the Timesheet textbox.
+    inside.write_on_textbox('Description information test.','DESCRIPTION')
+
+    #Check that the username on the file is the one wrote.
+    assert "Description information test." == inside.get_text_from_textbox('DESCRIPTION')
+
+    #Write on Description of the Timesheet textbox.
+    inside.write_on_textbox('4','TIMEINPUTTIMETASK')
+
+    #Check that the username on the file is the one wrote.
+    assert "4" == inside.get_text_from_textbox('TIMEINPUTTIMETASK')
+
     #Delete this timer
     #time.sleep(10)
 
     #headless browser.
+# cliente, proyecto, modulo, task.
