@@ -57,6 +57,8 @@ class inside_login_page:
             self.btn_method_click(self.DEVELOPMENTTIMTASK)
         elif option == 'WORKTYPETIMETASK':
             self.btn_method_click(self.WORKTYPETIMETASK)
+        else:
+            raise Exception('Is not possible to click/select a btn/option.')
 
     #Method to write on a textbox.
     def textbox_method_write(self, data_from_user, selector, timeout = 20):
@@ -75,6 +77,8 @@ class inside_login_page:
             self.textbox_method_write(data_from_user,self.DESCRIPTIONTIMETASK)
         elif option == 'TIMEINPUTTIMETASK':
             self.textbox_method_write(data_from_user,self.TIMEINPUTTIMETASK)
+        else:
+            raise Exception('Is not possible to write on the textbox.')
 
     # def textbox_method_get_text(self,selector):
     #     textbox = self.driver.find_element(selector)
@@ -101,3 +105,5 @@ class inside_login_page:
             textbox = self.driver.find_element(*self.TIMEINPUTTIMETASK)
             textbox = textbox.get_attribute("value")
             return textbox
+        else:
+            raise Exception('Is not possible to get the text from the textbox.')
