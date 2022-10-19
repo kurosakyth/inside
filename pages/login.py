@@ -1,8 +1,8 @@
+from operator import contains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-import tests.conftest
 
 class inside_login_page:
     #Links.
@@ -66,7 +66,6 @@ class inside_login_page:
         wait = WebDriverWait(self.driver, timeout)
         textbox = wait.until(ec.visibility_of_element_located(selector))
         textbox.send_keys(data_from_user + Keys.RETURN)
-        pass
 
     #Write on a textbox using a specific selector by using a method.
     def write_on_textbox(self, data_from_user, option):
@@ -100,14 +99,3 @@ class inside_login_page:
             return textbox_value
         else:
             raise Exception('Is not possible to get the text from the textbox.')
-
-    #Method to check if the browser is headless or not.
-    def browser_is_headless_get_title(self):
-        if tests.conftest.option.headless == True:
-            #Check the title of the page is the expected for windows Headless browser.
-            assert 'Acceso: cuentas de Google' == self.get_title()
-        elif tests.conftest.option.headless == False:
-            #Check the title of the page is the expected for WINDOWS.
-            assert 'Inicia sesión: Cuentas de Google' == self.get_title()
-            #Check the title of the page is the expected for MAC.
-            #assert 'Acceso: Cuentas de Google' == self.get_title()

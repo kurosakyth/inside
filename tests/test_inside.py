@@ -1,3 +1,4 @@
+from operator import contains
 from pages.login import inside_login_page
 import user
 import time
@@ -22,8 +23,8 @@ def test_prueba(browser):
     #Click on the Sign with Google button.
     inside.click_btn('GOOGLEBTN')
 
-    #Check if the browser is going to run headless or not and check the title of the page.
-    inside.browser_is_headless_get_title()
+    #Check the title of the browser if contains the title "Cuentas de google" on it.
+    assert inside.get_title().__contains__('Cuentas de Google') == True or inside.get_title().__contains__('cuentas de Google') == True
 
     #Write on the username textbox using the username of the file.
     inside.write_on_textbox(user.username,'USERNAME')
