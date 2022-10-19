@@ -64,7 +64,7 @@ def test_prueba(browser):
     inside.write_on_textbox('4','TIMEINPUTTIMETASK')
 
     #Check that the username on the file is the one wrote.
-    assert "4" == inside.get_text_from_textbox('TIMEINPUTTIMETASK')
+    assert "04" == inside.get_text_from_textbox('TIMEINPUTTIMETASK')
 
     #Delete this timer
     #time.sleep(10)

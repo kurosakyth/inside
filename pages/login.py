@@ -76,28 +76,28 @@ class inside_login_page:
         elif option == 'TIMEINPUTTIMETASK':
             self.textbox_method_write(data_from_user,self.TIMEINPUTTIMETASK)
 
-    def textbox_method_get_text(self,selector):
-        textbox = self.driver.find_element(selector)
-        textbox = textbox.get_attribute("value")
-        return textbox
+    # def textbox_method_get_text(self,selector):
+    #     textbox = self.driver.find_element(selector)
+    #     textbox = textbox.get_attribute("value")
+    #     return textbox
 
     #Check the web object and get the attribute 'value'.
     def get_text_from_textbox(self,option):
         if 'USERNAME' == option:
-            value = self.textbox_method_get_text(*self.USERNAME_TEXTBOX)
-            return value
-            # textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
-            # textbox = textbox.get_attribute("value")
-            # return textbox
+            # value = self.textbox_method_get_text(*self.USERNAME_TEXTBOX)
+            # return value
+            textbox = self.driver.find_element(*self.USERNAME_TEXTBOX)
+            textbox = textbox.get_attribute("value")
+            return textbox
         elif 'DESCRIPTION' == option:
-            value = self.textbox_method_get_text(*self.DESCRIPTIONTIMETASK)
-            return value
-            # textbox = self.driver.find_element(*self.DESCRIPTIONTIMETASK)
-            # textbox = textbox.get_attribute("value")
-            # return textbox
+            # value = self.textbox_method_get_text(*self.DESCRIPTIONTIMETASK)
+            # return value
+            textbox = self.driver.find_element(*self.DESCRIPTIONTIMETASK)
+            textbox = textbox.get_attribute("value")
+            return textbox
         elif 'TIMEINPUTTIMETASK' == option:
-            value = self.textbox_method_get_text(*self.TIMEINPUTTIMETASK)
-            return value
-            # textbox = self.driver.find_element(*self.TIMEINPUTTIMETASK)
-            # textbox = textbox.get_attribute("value")
-            # return textbox
+            # value = self.textbox_method_get_text(*self.TIMEINPUTTIMETASK)
+            # return value
+            textbox = self.driver.find_element(*self.TIMEINPUTTIMETASK)
+            textbox = textbox.get_attribute("value")
+            return textbox
