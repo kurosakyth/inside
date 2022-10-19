@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 #Set browser options to make it headless.
 option = Options()
-option.headless = False
+option.headless = True
 #fixture where is set the chrome driver as default, implicit wait to 10, to return the driver and quit.
 @pytest.fixture
 def browser():
