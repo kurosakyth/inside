@@ -69,3 +69,6 @@ def test_prueba(browser):
     #time.sleep(10)
 
     #headless browser.
+
+    #validar asserts de la nueva manera (que contenga).
+    #agregar asserts nuevos.
