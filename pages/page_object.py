@@ -18,10 +18,12 @@ PASSWORD_TEXTBOX = (By.XPATH, '//input[@type="password"]')
 MENU_BUTTON = (By.XPATH, '//button[@type="button"]/span/span')
 MY_TIMESHEET_DROPDOWN = (By.XPATH, '//span[text()="My Timesheet "]')
 
-# Timesheet options.
+# Timesheet / Timetask options.
 CLIENT_DROPDOWN = (By.XPATH, '//select/option[text()="Cecropia Solutions"]')
 PROJECT_DROPDOWN = (By.XPATH, '//select/option[text()="QA on Boarding"]')
 MODULE_DROPDOWN = (By.XPATH, '//select/option[text()="Development"]')
 TASK_DROPDOWN = (By.XPATH, '//select/option[text()="Qa Developer"]')
 DESCRIPTION_TEXTBOX = (By.XPATH, '//input[@formcontrolname="description"]')
 TIME_TEXTBOX = (By.XPATH, '//input[@formcontrolname="time"]')
+ADD_BTN = (By.XPATH, '//button[text()="ADD"]')
+DONE_BTN = (By.XPATH, '//button/span[text()="DONE"]')
