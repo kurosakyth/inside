@@ -42,7 +42,6 @@ def test_prueba(browser):
     #Click the Timesheet option of the menu.
     inside.click_btn(page_object.MYTIMESHEET)
 
-
     #Click the Timesheet option of the client dropdown.
     inside.click_btn(page_object.CLIENTDROPDOWNTIMETASK)
     
