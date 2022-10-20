@@ -66,7 +66,13 @@ def test_prueba(browser):
     # Check that the username on the file is the one wrote. 04 in this case (example).
     assert "04" == inside.get_text_from(*page_object.TIME_TEXTBOX)
 
+    # Click on ADD button on timesheet page.
+    #inside.click_btn(page_object.ADD_BTN)
+
+    # Click on DONE button on timesheet page.
+    #inside.click_btn(page_object.DONE_BTN)
+    
     # Delete this timer
-    #time.sleep(10)
+    time.sleep(10)
 
     #agregar asserts nuevos.
