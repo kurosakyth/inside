@@ -9,34 +9,37 @@ Requirements:
     Pipenv:
         pip install pipenv
         pipenv install
+        pipenv install selenium
+        pipenv install pytest
         pipenv run python -m pytest (if this displays an error you must..)
             pipenv --python #pythonVersionInstalled
             pipenv update
-
-            pipenv install pytest (if no module of pytest found)
-        pipenv install selenium
+        
 
 To print in console a print(something) you should use the command pipenv run python -m pytest -s
 
-Always a file named 'tests' and inside the files.py made must contain the name 'test_'name'.py
+Always set the file name as 'tests' and inside the 'test_name'.py files format with the 'test_name():' methods.
 
 tests\conftest.py file must contains the following structure:
 
     import pytest
-    import selenium.webdriver
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
 
+    # Set browser options to make it headless.  
+    option = Options()
+    option.headless = False
+
+    # fixture where is set the chrome driver as default, implicit wait to 10, to return the driver and quit.
     @pytest.fixture
-        def browser():
-            #Initialize the chromeDriver instance
-            b = selenium.webdriver.Chrome()
-            #Make its calls wait up to 10 seconds for elements to appear
-            b.implicitly_wait(10)
-            #Return the webdriver instance for the setup
-            yield b
-            #Quit the webdriver instance for the cleanup
-            b. quit()
+    def browser():
+        driver = webdriver.Chrome(options= option)
+        driver.implicitly_wait(10)
+        driver.maximize_window()
+        yield driver
+        driver.quit()
 
-the test made on tests must contains this following structure (tests\test_name.py):
+The test made on tests must contains this following structure (tests\test_name.py):
     #This function uses browser from the conftest.py file as a fixture
     def test_basic_duckduckgo_Search(browser):
         #code
@@ -50,7 +53,7 @@ the __init__ means that this folder is a python package.
 search_input = self.browser.find_element(*self.SEARCH_INPUT) ('*self....' el * significa que le está pasando un tuple '(By.ID, 'search_form_input')')
 /pages/search.py
 
-#Prueba correcta, no tocar
+#Prueba correcta, no tocar.
 # from selenium import webdriver
 # def test_prueba2():
 #     driver = webdriver.Chrome()
