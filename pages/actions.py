@@ -31,15 +31,15 @@ class inside_login_page:
         textbox.send_keys(data_from_user + Keys.RETURN)
 
     # Method to find the texbox on the page.
-    def get_text_from(self,selector, timeout = 20):
+    def get_text_from_textbox(self,selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
         textbox = wait.until(ec.visibility_of_element_located(selector))
         textbox = textbox.get_attribute('value')
         return textbox
 
-    # Method to get the alert generated after saving a request on the timesheet.
-    def get_alert(self,*selector, timeout = 20):
+    # Method to get text. Used to get the alert on the timesheet.
+    def get_text(self,*selector, timeout = 20):
         wait = WebDriverWait(self.driver, timeout)
-        alert = wait.until(ec.visibility_of_element_located(*selector))
-        alert = alert.text
-        return alert
+        obj = wait.until(ec.visibility_of_element_located(*selector))
+        obj = obj.text
+        return obj

@@ -1,4 +1,3 @@
-from operator import contains
 from pages.actions import inside_login_page
 import pages.page_object as page_object
 import credentials
@@ -32,6 +31,9 @@ def test_log_time(browser):
 
     # Write on the username textbox using the username of the file.
     inside.write_on_textbox(credentials.password,page_object.PASSWORD_TEXTBOX)
+
+    # Check the welcome message on the home inside page.
+    assert inside.get_text(page_object.WELCOME_MSG).__contains__('Welcome') == True
     
     # Click the top left Menu button.
     inside.click_btn(page_object.MENU_BUTTON)
@@ -55,13 +57,13 @@ def test_log_time(browser):
     inside.write_on_textbox('Description information test.',page_object.DESCRIPTION_TEXTBOX)
 
     # Check that the username on the file is the one wrote.
-    assert inside.get_text_from(page_object.DESCRIPTION_TEXTBOX).__contains__('Description information test.') == True
+    assert inside.get_text_from_textbox(page_object.DESCRIPTION_TEXTBOX).__contains__('Description information test.') == True
 
     # Write on Description of the Timesheet textbox. writes 08 in this case (example).
     inside.write_on_textbox('8',page_object.TIME_TEXTBOX)
 
     # Check that the username on the file is the one wrote. 08 in this case (example).
-    assert inside.get_text_from(page_object.TIME_TEXTBOX).__contains__('08') == True
+    assert inside.get_text_from_textbox(page_object.TIME_TEXTBOX).__contains__('08') == True
 
     # Click on ADD button on timesheet page.
     #inside.click_btn(page_object.ADD_BTN)
@@ -70,7 +72,7 @@ def test_log_time(browser):
     inside.click_btn(page_object.DONE_BTN)
 
     # Check that the entrie message appear after saving a request.
-    assert inside.get_alert(page_object.TIMESHEET_ALERT).__contains__('Timesheet Entries have been Saved.') == True
+    assert inside.get_text(page_object.TIMESHEET_ALERT).__contains__('Timesheet Entries have been Saved.') == True
 
     # Delete this timer
     # time.sleep(10)
