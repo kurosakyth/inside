@@ -32,4 +32,3 @@ def test_login(browser):
 
     # Check the welcome message on the home inside page.
     assert inside.get_text(page_object.WELCOME_MSG).__contains__('Welcome') == True
-    # inside.get_text(page_object.WELCOME_MSG)
