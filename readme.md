@@ -11,12 +11,14 @@ Requirements:
         pipenv install
         pipenv install selenium
         pipenv install pytest
+        pipenv install pytest-xdist (is to run tests on parallel)
         pipenv run python -m pytest (if this displays an error you must..)
             pipenv --python #pythonVersionInstalled
             pipenv update
         
 
-To print in console a print(something) you should use the command pipenv run python -m pytest -s
+To print in console a print(something) you should use the command: pipenv run python -m pytest -s
+To run tests in parallel you should use, the # is to run specific number of test: pipenv run python -m pytest -n #
 
 Always set the file name as 'tests' and inside the 'test_name'.py files format with the 'test_name():' methods.
 
