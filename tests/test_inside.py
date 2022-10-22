@@ -4,7 +4,7 @@ import pages.page_object as page_object
 import credentials
 import time
 
-def test_prueba(browser):
+def test_log_time(browser):
 
     # Using the fixture configuration run the browser.
     inside = inside_login_page(browser)
@@ -13,13 +13,13 @@ def test_prueba(browser):
     inside.load_page()
 
     # Check the title of the page is the expected.
-    assert 'PortalWeb' == inside.get_title_of_the_page()
+    assert inside.get_title_of_the_page().__contains__('PortalWeb') == True
 
     # Click the auth0 button.
     inside.click_btn(page_object.AUTH0_BTN)
 
     # Check the title of the page is the expected.
-    assert 'Sign In with Auth0' == inside.get_title_of_the_page()
+    assert inside.get_title_of_the_page().__contains__('Sign In with Auth0') == True
 
     # Click on the Sign with Google button.
     inside.click_btn(page_object.SIGN_IN_WITH_GOOGLE_BTN)
@@ -30,12 +30,9 @@ def test_prueba(browser):
     # Write on the username textbox using the username of the file.
     inside.write_on_textbox(credentials.username,page_object.USERNAME_TEXTBOX)
 
-    # Check that the username on the file is the one wrote.
-    assert credentials.username == inside.get_text_from(*page_object.USERNAME_TEXTBOX)
-
     # Write on the username textbox using the username of the file.
     inside.write_on_textbox(credentials.password,page_object.PASSWORD_TEXTBOX)
-
+    
     # Click the top left Menu button.
     inside.click_btn(page_object.MENU_BUTTON)
 
@@ -58,21 +55,22 @@ def test_prueba(browser):
     inside.write_on_textbox('Description information test.',page_object.DESCRIPTION_TEXTBOX)
 
     # Check that the username on the file is the one wrote.
-    assert "Description information test." == inside.get_text_from(*page_object.DESCRIPTION_TEXTBOX)
+    assert inside.get_text_from(page_object.DESCRIPTION_TEXTBOX).__contains__('Description information test.') == True
 
-    # Write on Description of the Timesheet textbox. writes 04 in this case (example).
-    inside.write_on_textbox('4',page_object.TIME_TEXTBOX)
+    # Write on Description of the Timesheet textbox. writes 08 in this case (example).
+    inside.write_on_textbox('8',page_object.TIME_TEXTBOX)
 
-    # Check that the username on the file is the one wrote. 04 in this case (example).
-    assert "04" == inside.get_text_from(*page_object.TIME_TEXTBOX)
+    # Check that the username on the file is the one wrote. 08 in this case (example).
+    assert inside.get_text_from(page_object.TIME_TEXTBOX).__contains__('08') == True
 
     # Click on ADD button on timesheet page.
     #inside.click_btn(page_object.ADD_BTN)
 
     # Click on DONE button on timesheet page.
-    #inside.click_btn(page_object.DONE_BTN)
-    
-    # Delete this timer
-    time.sleep(10)
+    inside.click_btn(page_object.DONE_BTN)
 
-    #agregar asserts nuevos.
+    # Check that the entrie message appear after saving a request.
+    assert inside.get_alert(page_object.TIMESHEET_ALERT).__contains__('Timesheet Entries have been Saved.') == True
+
+    # Delete this timer
+    # time.sleep(10)

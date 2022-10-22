@@ -15,7 +15,7 @@ USERNAME_TEXTBOX = (By.XPATH, '//input[@type="email"]')
 PASSWORD_TEXTBOX = (By.XPATH, '//input[@type="password"]')
 
 # Inside menu options.
-MENU_BUTTON = (By.XPATH, '//button[@type="button"]/span/span')
+MENU_BUTTON = (By.XPATH, '//button/span[@class="hamburger-box"]')
 MY_TIMESHEET_DROPDOWN = (By.XPATH, '//span[text()="My Timesheet "]')
 
 # Timesheet / Timetask options.
@@ -27,3 +27,4 @@ DESCRIPTION_TEXTBOX = (By.XPATH, '//input[@formcontrolname="description"]')
 TIME_TEXTBOX = (By.XPATH, '//input[@formcontrolname="time"]')
 ADD_BTN = (By.XPATH, '//button[text()="ADD"]')
 DONE_BTN = (By.XPATH, '//button/span[text()="DONE"]')
+TIMESHEET_ALERT = (By.XPATH, '//div[text()=" Timesheet Entries have been Saved. "]')

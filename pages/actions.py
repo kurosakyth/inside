@@ -2,6 +2,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 import pages.page_object as page_object
+from selenium.webdriver.common.alert import Alert
 
 class inside_login_page:
 
@@ -30,7 +31,15 @@ class inside_login_page:
         textbox.send_keys(data_from_user + Keys.RETURN)
 
     # Method to find the texbox on the page.
-    def get_text_from(self,*selector):
-        textbox = self.driver.find_element(*selector)
-        textbox = textbox.get_attribute("value")
+    def get_text_from(self,selector, timeout = 20):
+        wait = WebDriverWait(self.driver, timeout)
+        textbox = wait.until(ec.visibility_of_element_located(selector))
+        textbox = textbox.get_attribute('value')
         return textbox
+
+    # Method to get the alert generated after saving a request on the timesheet.
+    def get_alert(self,*selector, timeout = 20):
+        wait = WebDriverWait(self.driver, timeout)
+        alert = wait.until(ec.visibility_of_element_located(*selector))
+        alert = alert.text
+        return alert
