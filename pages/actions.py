@@ -3,7 +3,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 import pages.page_object as page_object
 
-class inside_login_page:
+class action_class:
 
     # Constructor.
     def __init__(self, driver):

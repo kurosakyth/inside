@@ -1,10 +1,10 @@
-from pages.actions import inside_login_page
+from pages.actions import action_class
 import pages.page_object as page_object
 import credentials
 
 def test_login(browser):
     # Using the fixture configuration run the browser.
-    inside = inside_login_page(browser)
+    inside = action_class(browser)
 
     # Open the browser with the page.
     inside.load_page()
