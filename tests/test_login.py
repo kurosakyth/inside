@@ -7,7 +7,7 @@ def test_login(browser):
     inside = action_class(browser)
 
     # Open the browser with the page.
-    inside.load_page()
+    inside.load_page(page_object.URL)
 
     # Check the title of the page is the expected.
     assert inside.get_title_of_the_page().__contains__('PortalWeb') == True

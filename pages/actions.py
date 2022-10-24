@@ -10,8 +10,8 @@ class action_class:
         self.driver = driver
 
     # Open the page with the link.
-    def load_page(self):
-        self.driver.get(page_object.URL)   
+    def load_page(self ,selector):
+        self.driver.get(selector)   
 
     # Get the title of the page and return it.
     def get_title_of_the_page(self):
