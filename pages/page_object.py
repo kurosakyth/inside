@@ -14,7 +14,7 @@ SIGN_IN_WITH_GOOGLE_BTN = (By.XPATH, '//a[@data-provider]')
 USERNAME_TEXTBOX = (By.XPATH, '//input[@type="email"]')
 PASSWORD_TEXTBOX = (By.XPATH, '//input[@type="password"]')
 
-# Inside menu options.//*[@id="collapseB"]/div/div/div/div/div/div[2]/div/div[1]/p
+# Inside menu options.
 WELCOME_MSG = (By.XPATH, '//div[@class="d-flex flex-column "]/p')
 MENU_BUTTON = (By.XPATH, '//button/span[@class="hamburger-box"]')
 MY_TIMESHEET_DROPDOWN = (By.XPATH, '//span[text()="My Timesheet "]')
