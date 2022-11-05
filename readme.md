@@ -3,7 +3,8 @@ Curso sobre AI para seleccion de elementos: AI for Element Selection: Erasing th
 
 Requirements:
     Set as environment variable the path of the webdriver:
-        path: C:\Selenium
+        Windows: path: C:\Selenium
+        Mac: path Finder > shit + command + g : look for /usr/ > local > bin : paste chromdriver there.
         With the driver inside named as chromedriver
     Python.
     Pipenv:
