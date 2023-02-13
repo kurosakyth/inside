@@ -21,6 +21,7 @@ Requirements:
 
 To print in console a print(something) you should use the command: pipenv run python -m pytest -s
 To run tests in parallel you should use, the # is to run specific number of test: pipenv run python -m pytest -n #
+To run the test and generate the html report use: pipenv run python -m pytest --html=report.htm
 
 Always set the file name as 'tests' and inside the 'test_name'.py files format with the 'test_name():' methods.
 
