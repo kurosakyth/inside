@@ -12,6 +12,7 @@ Requirements:
         pipenv install selenium
         pipenv install pytest
         pipenv install pytest-xdist (is to run tests on parallel)
+        pipenv install pytest-html
         pipenv run python -m pytest (if this displays an error you must..)
             pipenv --python #pythonVersionInstalled
             pipenv update
